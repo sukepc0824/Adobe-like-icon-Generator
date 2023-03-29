@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adobe-like icon Generator</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://code.jquery.com/jquery-3.6.4.slim.min.js"
+        integrity="sha256-a2yjHM4jnF9f54xUQakjZGaqYs/V1CYvWpoqZzC2/Bw=" crossorigin="anonymous"></script>
+    <script src="js/html2canvas.js"></script>
+    <!---font-opensans--->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <nobr>
+        <h1>Adobe-like icon Generator</h1>
+    </nobr>
+    <div class="contents">
+        <div class="preview">
+            <div class="icon preview-icon">
+                <div class="color-overlay"></div>
+                <p class="icon-title">Ps</p>
+            </div>
+        </div>
+        <div class="input-wrap">
+            <label>
+                <span>Text:</span>
+                <input type="text" maxlength="3" placeholder="Ps" class="input-text">
+            </label>
+            <label>
+                <span>Color:</span>
+                <input type='color' value="#469cd7">
+            </label>
+            <label>
+                <span>Size:</span>
+                <div class="selectbox">
+                    <select class="input-select">
+                        <option value="128">S (128)</option>
+                        <option value="256">M (256)</option>
+                        <option value="512">L (512)</option>
+                    </select>
+                </div>
+            </label>
+            <button class="download">Download</button>
+        </div>
+    </div>
+
+    <div class="canvas">
+        <div class="icon canvas-icon">
+            <div class="color-overlay"></div>
+            <p class="icon-title">Ps</p>
+        </div>
+    </div>
+    <script>
+        $(function () {
+            $('input[type="text"]').on("keyup", function () {
+                $(".icon-title").text($(this).val())
+            })
+
+            $('input[type="color"]').on("change", function () {
+                $(".icon").css("background-color", $(this).val());
+                $("p.icon-title").css("color", $(this).val());
+            })
+
+            $(".input-select").on("change", function () {
+                $(".canvas-icon").css("transform", `scale(${$(this).val() / 1024})`)
+            })
+
+            $("button").on("click", function () {
+                html2canvas(document.querySelector(".canvas-icon")).then(canvas => {
+                    let downloadEle = document.createElement("a");
+                    downloadEle.href = canvas.toDataURL("image/png");
+                    downloadEle.download = `adobe-${$('input[type="text"]').val()}.png`;
+                    downloadEle.click();
+                });
+            })
+        })
+    </script>
+</body>
+
+</html>

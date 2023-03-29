@@ -1,0 +1,139 @@
+body {
+    font-family: 'Open Sans', sans-serif;
+    background-color: #eee;
+}
+
+h1 {
+    font-weight:600;
+    font-size: 30px;
+    position: absolute;
+    top: calc(50% - 160px);
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.contents {
+    display: flex;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 30px;
+    align-items: center;
+    width: 390px;
+    border-radius: 10px;
+}
+
+.input-wrap {
+    margin-left: 30px;
+}
+
+label {
+    display: block;
+    height: 48px;
+    font-size: 16px;
+}
+
+select {
+    border: 1px solid #aaa;
+    height: 32px;
+    width: 90px;
+    padding: 0 5px;
+    border-radius: 4px;
+    outline: none;
+    padding-right: 28px;
+}
+
+.selectbox {
+    display: inline-flex;
+    align-items: center;
+    position: relative;
+}
+
+.selectbox::after {
+    position: absolute;
+    right: 10px;
+    width: 10px;
+    height: 7px;
+    background-color: #535353;
+    clip-path: polygon(0 0, 100% 0, 50% 100%);
+    content: '';
+    pointer-events: none;
+}
+
+
+input[type="color"] {
+    height: 32px;
+}
+
+input[type="text"] {
+    width: 60px;
+    height: 32px;
+    border-bottom: 1px solid #aaa;
+    outline: none;
+}
+
+input[type="text"]:focus {
+    border-bottom: 2px solid rgb(13, 102, 208);
+}
+
+.preview {
+    width: 153.6px;
+    height: 153.6px;
+}
+
+.preview-icon {
+    transform: scale(0.3);
+    transform-origin: left top;
+}
+
+
+.icon {
+    width: 512px;
+    height: 500px;
+    background-color: #469cd7;
+    position: relative;
+    border-radius: 90px;
+    overflow: hidden;
+}
+
+.color-overlay {
+    width: 100%;
+    height: 100%;
+    margin-bottom: -100%;
+    background-color: rgb(0, 0, 0, 0.8);
+    border-radius: 90px;
+}
+
+p.icon-title {
+    text-align: center;
+    font-size: 310px;
+    color: #469cd7;
+    letter-spacing: -0.03em;
+    margin-left: -0.015em;
+    margin: 0;
+    padding: 0;
+    line-height: 1.5;
+    font-weight: 700;
+}
+
+button {
+    background-color: rgb(13, 102, 208);
+    color: #fff;
+    padding: 10px 16px;
+    font-weight: 600;
+    font-size: 16px;
+    border-radius: 40px;
+    margin-top: 4px;
+}
+
+.canvas {
+    width: 0;
+    height: 0;
+    overflow: hidden;
+}
+
+.canvas-icon {
+    transform: scale(0.125);
+}
